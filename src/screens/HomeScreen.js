@@ -9,8 +9,10 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 // import data from '../data';
 
-const reducer = (state, action) => {
-  switch (action.type) {
+const reducer = (state, action) =>
+{
+  switch (action.type)
+  {
     case 'FETCH_REQUEST':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
@@ -22,20 +24,25 @@ const reducer = (state, action) => {
   }
 };
 
-function HomeScreen() {
+function HomeScreen()
+{
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
     error: '',
   });
   // const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
+  useEffect(() =>
+  {
+    const fetchData = async () =>
+    {
       dispatch({ type: 'FETCH_REQUEST' });
-      try {
+      try
+      {
         const result = await axios.get('/api/products');
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-      } catch (err) {
+      } catch (err)
+      {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
 
@@ -46,7 +53,7 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Amazona</title>
+        <title>J J Online Shop</title>
       </Helmet>
       <h1>Featured Products</h1>
       <div className="products">
